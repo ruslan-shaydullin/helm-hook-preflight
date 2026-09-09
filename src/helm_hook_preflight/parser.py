@@ -136,10 +136,13 @@ def parse_bundle(text: str, filename: str, namespace: str) -> list[Resource]:
         events = tuple(s.strip() for s in hook.split(",")) if hook is not None else ()
         if any(e not in EVENTS for e in events) or len(set(events)) != len(events):
             raise InputError("hook_events", "Unsupported, empty, or duplicate Helm hook event annotation.")
-        raw_weight = annotations.get("helm.sh/hook-weight", "0")
-        if not re.fullmatch(r"[+-]?[0-9]+", raw_weight) or len(raw_weight) > 20:
+        raw_weight = annotations.get("helm.sh/hook-weight", "0") if events else "0"
+        if not re.fullmatch(r"[+-]?[0-9]+", raw_weight):
             raise InputError("hook_weight", "Hook weight must be a quoted decimal 64-bit integer.")
-        weight = int(raw_weight)
+        digits = raw_weight.lstrip("+-").lstrip("0") or "0"
+        if len(digits) > 19:
+            raise InputError("hook_weight", "Hook weight is outside the signed 64-bit range.")
+        weight = int(("-" if raw_weight.startswith("-") else "") + digits)
         if not -(2**63) <= weight < 2**63:
             raise InputError("hook_weight", "Hook weight is outside the signed 64-bit range.")
         policies = tuple(p.strip() for p in annotations.get("helm.sh/hook-delete-policy", "before-hook-creation").split(",")) if events else ()
@@ -160,8 +163,9 @@ def parse_inventory(text: str, filename: str, namespace: str) -> set[Identity]:
         meta = mapping(obj["metadata"], "inventory.metadata")
         if not set(meta).issubset({"name", "namespace"}) or "name" not in meta:
             raise InputError("inventory_shape", "Inventory metadata accepts only name and namespace.")
-        identity = Identity("", obj["kind"], string(meta["name"], "inventory.metadata.name"),
-                            string(meta.get("namespace", namespace), "inventory.metadata.namespace"))
+        raw_ns = meta.get("namespace")
+        inventory_ns = string("" if raw_ns is None else raw_ns, "inventory.metadata.namespace", empty=True) or namespace
+        identity = Identity("", obj["kind"], string(meta["name"], "inventory.metadata.name"), inventory_ns)
         if identity in result:
             raise InputError("duplicate_identity", "Duplicate inventory identity.")
         result.add(identity)

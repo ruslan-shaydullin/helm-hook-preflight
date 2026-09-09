@@ -131,7 +131,7 @@ def analyze(resources: list[Resource], namespace: str, external: set[Identity] |
                     if env.get("valueFrom") is None:
                         continue
                     value = mapping(env["valueFrom"], ep + ".valueFrom")
-                    known = {"secretKeyRef", "configMapKeyRef", "fieldRef", "resourceFieldRef"}
+                    known = {"secretKeyRef", "configMapKeyRef", "fieldRef", "resourceFieldRef", "fileKeyRef"}
                     if not set(value).issubset(known):
                         raise InputError("env_value_from", "env.valueFrom contains an unknown selector.")
                     value = {key: selector for key, selector in value.items() if selector is not None}
@@ -141,6 +141,8 @@ def analyze(resources: list[Resource], namespace: str, external: set[Identity] |
                         secret_ref(consumer, value["secretKeyRef"], ep + ".valueFrom.secretKeyRef", True)
                     elif "configMapKeyRef" in value:
                         unsupported(consumer, ep + ".valueFrom.configMapKeyRef", "config_map_reference")
+                    elif "fileKeyRef" in value:
+                        unsupported(consumer, ep + ".valueFrom.fileKeyRef", "file_key_reference")
                 for ei, item in enumerate(sequence([] if container.get("envFrom") is None else container["envFrom"], cp + ".envFrom")):
                     ep = f"{cp}.envFrom[{ei}]"
                     value = mapping(item, ep)

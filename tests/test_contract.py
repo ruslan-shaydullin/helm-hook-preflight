@@ -56,6 +56,30 @@ def report(*objects, inventory=None):
 
 
 class Ordering(unittest.TestCase):
+    def test_inert_weight_and_valid_leading_zero_weight(self):
+        obj = provider()
+        obj["metadata"]["annotations"] = {"helm.sh/hook-weight": "abc"}
+        self.assertEqual(report(obj)["summary"]["status"], "not_applicable")
+        obj = provider(weight=-5)
+        obj["metadata"]["annotations"]["helm.sh/hook-weight"] = "-" + "0" * 100 + "5"
+        self.assertEqual(report(job(), obj)["summary"]["exit_code"], 0)
+
+    def test_file_key_reference_is_incomplete_not_input_error(self):
+        obj = job()
+        podspec(obj)["containers"][0]["env"] = [{"name": "FILE", "valueFrom": {"fileKeyRef": {"volumeName": "v", "path": "p", "key": "k"}}}]
+        result = report(obj, provider())
+        self.assertEqual(result["summary"]["exit_code"], 2)
+        self.assertEqual(result["summary"]["violations"], 1)
+        self.assertEqual(result["summary"]["unsupported"], 1)
+        self.assertEqual(result["findings"][1]["reason"], "file_key_reference")
+
+    def test_inventory_empty_namespace_falls_back(self):
+        for namespace in ["", None, "demo"]:
+            obj = provider()
+            obj["metadata"]["namespace"] = namespace
+            inventory = parse_inventory(yaml.safe_dump(obj), "inventory.yaml", "demo")
+            self.assertEqual(report(job(), inventory=inventory)["findings"][0]["verdict"], "declared_external")
+
     def test_nullable_kubernetes_fields_and_empty_env_value(self):
         for literal in ["", None]:
             obj = job()
