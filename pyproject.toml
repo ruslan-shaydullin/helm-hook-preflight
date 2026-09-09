@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "helm-hook-preflight"
+version = "0.0.1a1"
+description = "Offline first-install ordering checks for direct Helm hook dependencies"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "Ruslan Shaydullin"}]
+dependencies = ["PyYAML>=6.0.3,<7"]
+classifiers = ["Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Topic :: Software Development :: Quality Assurance"]
+
+[project.scripts]
+helm-hook-preflight = "helm_hook_preflight.cli:main"
+
+[project.urls]
+Repository = "https://github.com/ruslan-shaydullin/helm-hook-preflight"
+Issues = "https://github.com/ruslan-shaydullin/helm-hook-preflight/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,15 @@
+# Validation and limits
+
+Validated 2026-09-09. No cluster was used and no hook commands were executed. The default contract tests are offline. Real historical regression tests are opt-in and render digest-pinned public charts using Helm 4.2.4; they do not save raw renders.
+
+The meaningful controls cover earlier/main/later/equal-weight providers, external/inventory/default-SA assumptions, namespace and API-group separation, duplicates, optional Secrets, ordinary/init containers, Pod/Job paths, envFrom, hook lists and group cleanup, unsupported references/events, mixed violations+unknown, no-hook coverage, malformed/empty/List/alias/timestamp input, redacted payloads, null optional lists, and file/stdin/text/JSON exit codes.
+
+Full upstream renders reproduced GreenKube 1→0 and DataHub 2→2, retaining three auth-reference transitions and the unresolved MySQL Secret. Fresh renders can generate different Secret and bootstrap environment values; dependency identities/annotations/paths were compared semantically, not by requiring byte-identical render hashes. Source/archive digests are pinned.
+
+An independent evidence reviewer found that DataHub emits `volumes: null`; the initial strict list handling rejected both renders. Optional null collection normalization was fixed and verified on untouched real renders. Additional source-backed controls fixed valid empty env `value` alongside a Secret selector, null inactive selectors, null annotations, and null ServiceAccount defaults. Optional Secret `optional: null` is interpreted as an unspecified Kubernetes boolean (required). Required containers still must be a nonempty list. The namespace assumption explicitly covers every consumer namespace.
+
+Claude received pinned Helm source excerpts and, separately, a SHA256-bound code/test/scope snapshot with tools disabled. Findings were reproduced or rejected using controls and primary sources. Model review is not a human endorsement, a cluster oracle, or evidence of demand. Final release evidence and any additional fixes are recorded in [release notes](https://github.com/ruslan-shaydullin/helm-hook-preflight/releases/tag/v0.0.1a1).
+
+`scripts/verify_install.py` creates a new environment outside the checkout, clears PYTHONPATH, confirms the import resolves inside its site-packages, and checks good/bad/unknown/input-error examples. `--tests` also executes copied offline contract tests against that installed build. Run it on both wheel and sdist. The CI matrix targets Python 3.10 and 3.14; hosted outcomes are available in [Actions](https://github.com/ruslan-shaydullin/helm-hook-preflight/actions). A workflow file alone is not evidence that hosted CI passed.
+
+This is not exhaustive Kubernetes schema validation, a readiness/RBAC/image analyzer, an upgrade check, an all-Helm-version compatibility claim, or a report of external user trials. Scope gaps and equal weights are explicit. No feature count, test count, or model agreement establishes standalone workflow value.

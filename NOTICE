@@ -1,0 +1,18 @@
+helm-hook-preflight
+Copyright 2026 Ruslan Shaydullin
+
+The implementation and synthetic controls are released under LICENSE.
+
+Historical regression provenance:
+- GreenKubeCloud/GreenKube v0.2.4 and v0.2.5, Apache-2.0.
+- acryldata/datahub-helm charts 0.8.20 and 0.8.21, Apache-2.0.
+
+No upstream chart source, rendered Secret values or Helm implementation source
+is bundled in this repository or package. tests/corpus.json records immutable
+source URLs, digests, attribution and upstream license URLs. The optional
+scripts/fetch_corpus.py downloads those upstream sources to a local ignored
+directory; retain their upstream licenses/notices if redistributing downloads.
+
+Helm, KubeLinter, helm-unittest, chart-testing and Nelm are separate projects.
+References and comparisons do not imply affiliation or endorsement. Their
+implementations are not incorporated into this package.

@@ -1,0 +1,17 @@
+name: Chart trial feedback
+description: Tell us what happened on an actual chart task.
+body:
+  - type: textarea
+    id: task
+    attributes:
+      label: What chart change or first install were you working on?
+    validations:
+      required: true
+  - type: textarea
+    id: run
+    attributes:
+      label: Installation, run, help received, and whether the result made sense
+  - type: textarea
+    id: baseline
+    attributes:
+      label: Your usual method, decision made, and next eligible use

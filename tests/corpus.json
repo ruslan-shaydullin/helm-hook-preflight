@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-09",
+  "helm_semantics_version": "4.2.4",
+  "release": "screen",
+  "namespace": "probe",
+  "notice": "Public sources fetched on demand. No upstream charts or rendered Secret values are bundled. Expected relationships are historical regression observations, not installation success. Fresh render bytes are nondeterministic; checksums pin source inputs.",
+  "fixtures": [
+    {
+      "id": "greenkube-v0.2.4",
+      "project": "GreenKubeCloud/GreenKube",
+      "tag": "v0.2.4",
+      "commit": "694f868dc1019dd08d246fc4cd14b7bb51c22661",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/GreenKubeCloud/GreenKube/blob/694f868dc1019dd08d246fc4cd14b7bb51c22661/LICENSE",
+      "source_url": "https://github.com/GreenKubeCloud/GreenKube/compare/v0.2.4...v0.2.5",
+      "chart_path": "helm-chart",
+      "render_args": [
+        "--set",
+        "monitoring.serviceMonitor.enabled=true"
+      ],
+      "files": [
+        {
+          "path": "helm-chart/Chart.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/Chart.yaml",
+          "sha256": "92349da2758acaa58934a6999a3f32448b266c454f75f779b725134b7cfb2b9a"
+        },
+        {
+          "path": "helm-chart/templates/NOTES.txt",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/NOTES.txt",
+          "sha256": "0ed2353d4bc0ba780174b2eff7a8f54f33aa4c08eb277f2dcd92b3bcc77c8014"
+        },
+        {
+          "path": "helm-chart/templates/_helpers.tpl",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/_helpers.tpl",
+          "sha256": "e1388256d936585b344a292f70b406829eee33633fc2020df8cb7b36aab5c4dc"
+        },
+        {
+          "path": "helm-chart/templates/api-service.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/api-service.yaml",
+          "sha256": "373a9a37cee7c71956087f5986e077095db102214ac8cbbe37bc1cb4b8d63201"
+        },
+        {
+          "path": "helm-chart/templates/clusterrole.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/clusterrole.yaml",
+          "sha256": "1287b58fdd278741cd8648b7fc62bae053fabe9265360e292406f97b558bc5fb"
+        },
+        {
+          "path": "helm-chart/templates/clusterrolebinding.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/clusterrolebinding.yaml",
+          "sha256": "fac3847b6cd9f906c908aa81c2b298f8de336965ab1b6672378fdbfb44ee6109"
+        },
+        {
+          "path": "helm-chart/templates/configmap.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/configmap.yaml",
+          "sha256": "1b80cec7b57f498fb76f3d5ced2112b136e9e9821cbba52c6fa97c0f4ea3b1a3"
+        },
+        {
+          "path": "helm-chart/templates/deployment.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/deployment.yaml",
+          "sha256": "9aca975a5c0fca790a92eb9d92a712aa55a489de9e27e0be128e8738264e5527"
+        },
+        {
+          "path": "helm-chart/templates/networkpolicy.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/networkpolicy.yaml",
+          "sha256": "f56a8b99a4047ed080ee8d7a7e2b740d5aa91b78faac534c3a7d2339c4dd493c"
+        },
+        {
+          "path": "helm-chart/templates/post-install-hook.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/post-install-hook.yaml",
+          "sha256": "d0e35bff46aac52fb86a2dba1ea8970c865fe8c55bc379db86408e65ec987cce"
+        },
+        {
+          "path": "helm-chart/templates/postgres-service.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/postgres-service.yaml",
+          "sha256": "e2a9e5f680c64fa8654ee0d47d58482e12d5910653ec9017f19825c7260b3132"
+        },
+        {
+          "path": "helm-chart/templates/postgres-statefulset.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/postgres-statefulset.yaml",
+          "sha256": "78950f1d8d387052b37ae45e67877d2f30f943317687e81c04203fe10a7b570e"
+        },
+        {
+          "path": "helm-chart/templates/pre-install-check.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/pre-install-check.yaml",
+          "sha256": "95e12331fbb3577dd53dad8b0db0a1294ed2875a44beb519bf667845ccbfa890"
+        },
+        {
+          "path": "helm-chart/templates/prometheus-rbac.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/prometheus-rbac.yaml",
+          "sha256": "ac5f5facb2e5f7521844417545dfb7da43afa70af539e870cb48eeb04a0e1eb9"
+        },
+        {
+          "path": "helm-chart/templates/pvc.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/pvc.yaml",
+          "sha256": "627b8820691c6fb07719d99be17f9e24f4c033724b667872a381e548bbe72c2e"
+        },
+        {
+          "path": "helm-chart/templates/secret.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/secret.yaml",
+          "sha256": "2213450ce2a628ac960f412666c42a535bbfa5256b372427359096e2ec20b5af"
+        },
+        {
+          "path": "helm-chart/templates/serviceaccount.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/serviceaccount.yaml",
+          "sha256": "e54fa2948c54d272ec3041efae40961927047925b0bff836072ba6b92af9f33a"
+        },
+        {
+          "path": "helm-chart/templates/servicemonitor.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/servicemonitor.yaml",
+          "sha256": "5cbffc1766bc4e6e81908c38bfe46973b787411b3e30918e6659599dd37e12a1"
+        },
+        {
+          "path": "helm-chart/templates/tests/test-connection.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/templates/tests/test-connection.yaml",
+          "sha256": "5f8c7a41bc7f43e62a55c255c9eaa1d6fe983af27a219fcc708f23924dd6869d"
+        },
+        {
+          "path": "helm-chart/values.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/helm-chart/values.yaml",
+          "sha256": "814e9a58456ce6e0710cedcf89e670d6312111f4413c179194d089e5f0f1f53a"
+        }
+      ],
+      "expected_direct_reference": "ServiceAccount phase_mismatch",
+      "license_source": {
+        "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/694f868dc1019dd08d246fc4cd14b7bb51c22661/LICENSE",
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      }
+    },
+    {
+      "id": "greenkube-v0.2.5",
+      "project": "GreenKubeCloud/GreenKube",
+      "tag": "v0.2.5",
+      "commit": "bc6d6229940f0858936b8cbb51a212cc730c1a3c",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/GreenKubeCloud/GreenKube/blob/bc6d6229940f0858936b8cbb51a212cc730c1a3c/LICENSE",
+      "source_url": "https://github.com/GreenKubeCloud/GreenKube/compare/v0.2.4...v0.2.5",
+      "chart_path": "helm-chart",
+      "render_args": [
+        "--set",
+        "monitoring.serviceMonitor.enabled=true"
+      ],
+      "files": [
+        {
+          "path": "helm-chart/Chart.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/Chart.yaml",
+          "sha256": "5fa61977b9ea6125e650825afa38be7747fb5d01417396dbfd87cd2652f6d22e"
+        },
+        {
+          "path": "helm-chart/templates/NOTES.txt",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/NOTES.txt",
+          "sha256": "0ed2353d4bc0ba780174b2eff7a8f54f33aa4c08eb277f2dcd92b3bcc77c8014"
+        },
+        {
+          "path": "helm-chart/templates/_helpers.tpl",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/_helpers.tpl",
+          "sha256": "e1388256d936585b344a292f70b406829eee33633fc2020df8cb7b36aab5c4dc"
+        },
+        {
+          "path": "helm-chart/templates/api-service.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/api-service.yaml",
+          "sha256": "373a9a37cee7c71956087f5986e077095db102214ac8cbbe37bc1cb4b8d63201"
+        },
+        {
+          "path": "helm-chart/templates/clusterrole.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/clusterrole.yaml",
+          "sha256": "1287b58fdd278741cd8648b7fc62bae053fabe9265360e292406f97b558bc5fb"
+        },
+        {
+          "path": "helm-chart/templates/clusterrolebinding.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/clusterrolebinding.yaml",
+          "sha256": "fac3847b6cd9f906c908aa81c2b298f8de336965ab1b6672378fdbfb44ee6109"
+        },
+        {
+          "path": "helm-chart/templates/configmap.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/configmap.yaml",
+          "sha256": "1b80cec7b57f498fb76f3d5ced2112b136e9e9821cbba52c6fa97c0f4ea3b1a3"
+        },
+        {
+          "path": "helm-chart/templates/deployment.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/deployment.yaml",
+          "sha256": "9aca975a5c0fca790a92eb9d92a712aa55a489de9e27e0be128e8738264e5527"
+        },
+        {
+          "path": "helm-chart/templates/hook-rbac.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/hook-rbac.yaml",
+          "sha256": "5afb7811f9ccb8ce450c922c66d93567bf9a3d0ae67a8806481d279fc39ed3c3"
+        },
+        {
+          "path": "helm-chart/templates/networkpolicy.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/networkpolicy.yaml",
+          "sha256": "f56a8b99a4047ed080ee8d7a7e2b740d5aa91b78faac534c3a7d2339c4dd493c"
+        },
+        {
+          "path": "helm-chart/templates/post-install-hook.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/post-install-hook.yaml",
+          "sha256": "b0e05ef0d75396edff3559c682ebe9d1c9cfd1c55839ee57a865abc8beea16e1"
+        },
+        {
+          "path": "helm-chart/templates/postgres-service.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/postgres-service.yaml",
+          "sha256": "e2a9e5f680c64fa8654ee0d47d58482e12d5910653ec9017f19825c7260b3132"
+        },
+        {
+          "path": "helm-chart/templates/postgres-statefulset.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/postgres-statefulset.yaml",
+          "sha256": "78950f1d8d387052b37ae45e67877d2f30f943317687e81c04203fe10a7b570e"
+        },
+        {
+          "path": "helm-chart/templates/pre-install-check.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/pre-install-check.yaml",
+          "sha256": "e26be4cd5f2ec312e2e2a012e3912fc6da051b2499535e92372fdfc400219635"
+        },
+        {
+          "path": "helm-chart/templates/prometheus-rbac.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/prometheus-rbac.yaml",
+          "sha256": "ac5f5facb2e5f7521844417545dfb7da43afa70af539e870cb48eeb04a0e1eb9"
+        },
+        {
+          "path": "helm-chart/templates/pvc.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/pvc.yaml",
+          "sha256": "627b8820691c6fb07719d99be17f9e24f4c033724b667872a381e548bbe72c2e"
+        },
+        {
+          "path": "helm-chart/templates/secret.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/secret.yaml",
+          "sha256": "2213450ce2a628ac960f412666c42a535bbfa5256b372427359096e2ec20b5af"
+        },
+        {
+          "path": "helm-chart/templates/serviceaccount.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/serviceaccount.yaml",
+          "sha256": "e54fa2948c54d272ec3041efae40961927047925b0bff836072ba6b92af9f33a"
+        },
+        {
+          "path": "helm-chart/templates/servicemonitor.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/servicemonitor.yaml",
+          "sha256": "5cbffc1766bc4e6e81908c38bfe46973b787411b3e30918e6659599dd37e12a1"
+        },
+        {
+          "path": "helm-chart/templates/tests/test-connection.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/templates/tests/test-connection.yaml",
+          "sha256": "5f8c7a41bc7f43e62a55c255c9eaa1d6fe983af27a219fcc708f23924dd6869d"
+        },
+        {
+          "path": "helm-chart/values.yaml",
+          "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/helm-chart/values.yaml",
+          "sha256": "4de584dc75356988b1e7634fcc23041d70d034c2dd616840dbbf2878cbd16c2f"
+        }
+      ],
+      "expected_direct_reference": "ServiceAccount ordered_before",
+      "license_source": {
+        "url": "https://raw.githubusercontent.com/GreenKubeCloud/GreenKube/bc6d6229940f0858936b8cbb51a212cc730c1a3c/LICENSE",
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+      }
+    },
+    {
+      "id": "datahub-0.8.20",
+      "project": "acryldata/datahub-helm",
+      "tag": "datahub-0.8.20",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/acryldata/datahub-helm/blob/datahub-0.8.20/LICENSE",
+      "source_url": "https://github.com/acryldata/datahub-helm/pull/674",
+      "chart_path": "datahub",
+      "render_args": [],
+      "archive": {
+        "url": "https://github.com/acryldata/datahub-helm/releases/download/datahub-0.8.20/datahub-0.8.20.tgz",
+        "sha256": "256842327d03417602e0247c276e953dd55f1f661f0fbb535d6212547cde6e96"
+      },
+      "expected_direct_reference": "3 auth Secret phase_mismatch; mysql-secrets external_or_unknown",
+      "license_source": {
+        "url": "https://raw.githubusercontent.com/acryldata/datahub-helm/datahub-0.8.20/LICENSE",
+        "sha256": "b99e811a65401b4be910234892c3c267508722a62786f1c0048ad5bbe1ba4075"
+      }
+    },
+    {
+      "id": "datahub-0.8.21",
+      "project": "acryldata/datahub-helm",
+      "tag": "datahub-0.8.21",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/acryldata/datahub-helm/blob/datahub-0.8.21/LICENSE",
+      "source_url": "https://github.com/acryldata/datahub-helm/pull/674",
+      "chart_path": "datahub",
+      "render_args": [],
+      "archive": {
+        "url": "https://github.com/acryldata/datahub-helm/releases/download/datahub-0.8.21/datahub-0.8.21.tgz",
+        "sha256": "a5358a1d0a7a943a3ad286d866d79f63a33145a4706e25379bc49da0ac093589"
+      },
+      "expected_direct_reference": "3 auth Secret ordered_before; mysql-secrets external_or_unknown",
+      "license_source": {
+        "url": "https://raw.githubusercontent.com/acryldata/datahub-helm/datahub-0.8.21/LICENSE",
+        "sha256": "b99e811a65401b4be910234892c3c267508722a62786f1c0048ad5bbe1ba4075"
+      }
+    }
+  ]
+}

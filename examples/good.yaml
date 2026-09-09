@@ -1,0 +1,25 @@
+# Synthetic ordering control; do not deploy.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migration
+  annotations:
+    helm.sh/hook: pre-install
+    helm.sh/hook-weight: '-4'
+spec:
+  template:
+    spec:
+      serviceAccountName: runner
+      restartPolicy: Never
+      containers:
+      - name: migration
+        image: example.invalid/no-image
+        env: []
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: runner
+  annotations:
+    helm.sh/hook: pre-install
+    helm.sh/hook-weight: '-5'

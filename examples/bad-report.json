@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0",
+  "tool_version": "0.0.1a1",
+  "model": "fresh_first_install",
+  "helm_semantics_version": "4.2.4",
+  "namespace": "demo",
+  "assumptions": [
+    "Complete rendered bundle for a fresh native Helm first install; hooks enabled.",
+    "Chart-declared dependencies do not preexist unless listed in the identity-only external inventory.",
+    "Every consumer namespace (explicit or release default) exists before hooks and its default ServiceAccount controller has reconciled.",
+    "An earlier declaration proves only creation order, not readiness, Secret keys, RBAC, images, or install success.",
+    "No external actor mutates or deletes dependencies during the hook group."
+  ],
+  "findings": [
+    {
+      "consumer": {
+        "identity": {
+          "group": "batch",
+          "kind": "Job",
+          "name": "migration",
+          "namespace": "demo"
+        },
+        "api_version": "batch/v1",
+        "events": [
+          "pre-install"
+        ],
+        "phase": "hook",
+        "weight": -4,
+        "delete_policies": [
+          "before-hook-creation"
+        ],
+        "source": {
+          "file": "examples/bad.yaml",
+          "document": 1,
+          "line": 2
+        }
+      },
+      "dependency": {
+        "group": "",
+        "kind": "ServiceAccount",
+        "name": "runner",
+        "namespace": "demo"
+      },
+      "provider": {
+        "identity": {
+          "group": "",
+          "kind": "ServiceAccount",
+          "name": "runner",
+          "namespace": "demo"
+        },
+        "api_version": "v1",
+        "events": [],
+        "phase": "main",
+        "weight": null,
+        "delete_policies": [],
+        "source": {
+          "file": "examples/bad.yaml",
+          "document": 2,
+          "line": 18
+        }
+      },
+      "reference_path": "spec.template.spec.serviceAccountName",
+      "required": true,
+      "verdict": "phase_mismatch",
+      "reason": "provider_main_phase",
+      "explanation": "Dependency is declared in the main phase, after the blocking pre-install hook."
+    }
+  ],
+  "out_of_scope": [
+    {
+      "resource": {
+        "identity": {
+          "group": "",
+          "kind": "ServiceAccount",
+          "name": "runner",
+          "namespace": "demo"
+        },
+        "api_version": "v1",
+        "events": [],
+        "phase": "main",
+        "weight": null,
+        "delete_policies": [],
+        "source": {
+          "file": "examples/bad.yaml",
+          "document": 2,
+          "line": 18
+        }
+      },
+      "reason": "not_a_pre_install_consumer"
+    }
+  ],
+  "errors": [],
+  "external_inventory": [],
+  "summary": {
+    "status": "violations",
+    "exit_code": 1,
+    "violations": 1,
+    "unknown": 0,
+    "unsupported": 0,
+    "incomplete": false,
+    "analysis_performed": true,
+    "verdict_counts": {
+      "phase_mismatch": 1
+    }
+  },
+  "coverage": {
+    "resources": 2,
+    "consumers": 1,
+    "references": 1,
+    "out_of_scope_resources": 1,
+    "supported_reference_families": [
+      "serviceAccountName (including implicit default)",
+      "env.valueFrom.secretKeyRef",
+      "envFrom.secretRef"
+    ],
+    "supported_containers": [
+      "containers",
+      "initContainers"
+    ],
+    "limits": [
+      "Only batch/v1 Job and v1 Pod pre-install consumers.",
+      "Unsupported detected reference families make the report incomplete.",
+      "Other Kubernetes fields, hook kinds, and lifecycle events are not validated.",
+      "Not a Kubernetes schema validator; not a full chart or deployment verdict."
+    ]
+  }
+}
